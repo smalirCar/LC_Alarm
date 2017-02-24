@@ -3,10 +3,13 @@
 //  LC_Alarm
 //
 //  Created by 李成 on 2017/2/8.
-//  Copyright © 2017年 李成. All rights reserved.
-//
+//  简书地址: http://www.jianshu.com/p/e715d75da7b9
+//  GitHub: 下载地址 https://github.com/smalirCar/LC_Alarm.git
+//  百尺竿头，更进一步
+
 
 #import "AppDelegate.h"
+#import <AVFoundation/AVFoundation.h>
 
 @interface AppDelegate ()
 
@@ -17,6 +20,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
     return YES;
 }
 

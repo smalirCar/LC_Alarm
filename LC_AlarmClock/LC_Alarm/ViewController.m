@@ -3,8 +3,9 @@
 //  LC_Alarm
 //
 //  Created by 李成 on 2017/2/8.
-//  Copyright © 2017年 李成. All rights reserved.
-//
+//  简书地址: http://www.jianshu.com/p/e715d75da7b9
+//  GitHub: 下载地址 https://github.com/smalirCar/LC_Alarm.git
+//  百尺竿头，更进一步
 
 #import "ViewController.h"
 
@@ -57,7 +58,8 @@
     label.backgroundColor = [UIColor colorWithRed:0.2 green:0.2 blue:0.6 alpha:0.2];
     label.text=@"00:00:00";
     label.textAlignment = NSTextAlignmentCenter;
-    [label setFont:[UIFont fontWithName:nil size:80]];
+
+    [label setFont:[UIFont systemFontOfSize:80]];
     _labelOfRemainingTime = label;
     [self.view addSubview:label];
     UILabel * label1 = [[UILabel alloc] initWithFrame:CGRectMake(25, 400, kW - 40, 40)];
@@ -66,7 +68,7 @@
 }
 
 - (void)countTime:(UIButton *) button {
-    // 选中状态
+    // 改变选中装填
     button.selected = !button.selected;
     NSLog(@"%d", button.selected);
     
@@ -126,20 +128,22 @@
     if (self.remainingTime > 0 && _button.selected) {
         NSString * strT = [NSString stringWithFormat:@"%02i:%02i:%02i",(int)lt / 3600 % 60, (int)lt / 60 % 60, (int)lt % 60];
         self.labelOfRemainingTime.text = strT;
+        
+        [_button setTitle:@"确定" forState:UIControlStateSelected];
+        [_button setTitleColor:[UIColor grayColor] forState:UIControlStateSelected];
+        [self.view reloadInputViews];
+        // 当没有定时器的时候, 创建定时器。倘若创建了定时器, 那么放弃定时器。
+        if (_timer == nil) {
+            //每隔0.01秒刷新一次页面
+            _timer = [NSTimer scheduledTimerWithTimeInterval:0.05 target:self selector:@selector(runAction) userInfo:nil repeats:YES];
+            [[NSRunLoop currentRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
+        }
+        NSLog(@"开始倒计时.....");
     } else {
         NSLog(@"请重新设置时间....");
         self.labelOfRemainingTime.text = @"00:00:00";
+        self.button.selected = NO;
         return;
-    }
-    
-    // 当没有定时器的时候, 创建定时器。倘若创建了定时器, 那么放弃定时器。
-    if (_timer == nil) {
-        //每隔0.01秒刷新一次页面
-        _timer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(runAction) userInfo:nil repeats:YES];
-        [[NSRunLoop currentRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
-        NSLog(@"开始倒计时.....");
-    } else {
-        [_timer invalidate];   //定时器失效
     }
 }
 
@@ -147,13 +151,17 @@
     self.remainingTime --;
     if(_remainingTime == 0) {
         [_timer invalidate];//让定时器失效
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"关闭闹钟" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
-        //        [alert addButtonWithTitle:@"确定"];
-        alert.delegate = self;
-        //        [alert clickedButtonAtIndex:0];
-        [alert show];
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"点击确定关掉闹钟" preferredStyle:UIAlertControllerStyleActionSheet];
+        [alertController addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+            [_player stop];
+            _button.selected = NO;
+        }]];
+        [self presentViewController:alertController animated:YES completion:^{
+            _timer = nil;
+        }];
         //提示框弹出的同时，开始响闹钟
-        NSString *path = [[NSBundle mainBundle]pathForResource:@"4948.mp3" ofType:nil];
+        NSString *path = [[NSBundle mainBundle]pathForResource:@"4948.MP3" ofType:nil];
         NSURL *url = [NSURL fileURLWithPath:path];
         NSError *error;
         _player = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
@@ -176,7 +184,7 @@
             }
         }
         //删除所有通知
-        //    [app cancelAllLocalNotifications];
+            [app cancelAllLocalNotifications];
         //
         
         //判断是否已经注册通知
@@ -197,6 +205,7 @@
     }
     NSString *str = [NSString stringWithFormat:@"%02d:%02d:%02d",(int)(self.remainingTime) / 3600 % 24, (int)(self.remainingTime) / 60 % 60, (int)(self.remainingTime) % 60];
     self.labelOfRemainingTime.text = str;
+//    _button.selected = NO;
 }
 
 #pragma mark - 增加本地通知

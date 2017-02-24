@@ -16,7 +16,7 @@
 		B472CAD71E4AB8FF00576BCA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B472CAD51E4AB8FF00576BCA /* LaunchScreen.storyboard */; };
 		B472CAE21E4AB8FF00576BCA /* LC_AlarmTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B472CAE11E4AB8FF00576BCA /* LC_AlarmTests.m */; };
 		B472CAED1E4AB8FF00576BCA /* LC_AlarmUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = B472CAEC1E4AB8FF00576BCA /* LC_AlarmUITests.m */; };
-		B472CAFB1E4ABD5E00576BCA /* 4948.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B472CAFA1E4ABD5E00576BCA /* 4948.mp3 */; };
+		B49655071E601F3100C1C99B /* 4948.MP3 in Resources */ = {isa = PBXBuildFile; fileRef = B49655061E601F3100C1C99B /* 4948.MP3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,7 +54,7 @@
 		B472CAE81E4AB8FF00576BCA /* LC_AlarmUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LC_AlarmUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B472CAEC1E4AB8FF00576BCA /* LC_AlarmUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LC_AlarmUITests.m; sourceTree = "<group>"; };
 		B472CAEE1E4AB8FF00576BCA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B472CAFA1E4ABD5E00576BCA /* 4948.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 4948.mp3; sourceTree = "<group>"; };
+		B49655061E601F3100C1C99B /* 4948.MP3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 4948.MP3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,7 +85,7 @@
 		B472CAB81E4AB8FF00576BCA = {
 			isa = PBXGroup;
 			children = (
-				B472CAFA1E4ABD5E00576BCA /* 4948.mp3 */,
+				B49655061E601F3100C1C99B /* 4948.MP3 */,
 				B472CAC31E4AB8FF00576BCA /* LC_Alarm */,
 				B472CAE01E4AB8FF00576BCA /* LC_AlarmTests */,
 				B472CAEB1E4AB8FF00576BCA /* LC_AlarmUITests */,
@@ -213,6 +213,7 @@
 				TargetAttributes = {
 					B472CAC01E4AB8FF00576BCA = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 98E92X44D4;
 						ProvisioningStyle = Automatic;
 					};
 					B472CADC1E4AB8FF00576BCA = {
@@ -255,7 +256,7 @@
 				B472CAD71E4AB8FF00576BCA /* LaunchScreen.storyboard in Resources */,
 				B472CAD41E4AB8FF00576BCA /* Assets.xcassets in Resources */,
 				B472CACF1E4AB8FF00576BCA /* Main.storyboard in Resources */,
-				B472CAFB1E4ABD5E00576BCA /* 4948.mp3 in Resources */,
+				B49655071E601F3100C1C99B /* 4948.MP3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -430,6 +431,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 98E92X44D4;
 				INFOPLIST_FILE = LC_Alarm/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "liCheng.LC-Alarm";
@@ -441,6 +443,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 98E92X44D4;
 				INFOPLIST_FILE = LC_Alarm/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "liCheng.LC-Alarm";
@@ -513,6 +516,7 @@
 				B472CAF31E4AB8FF00576BCA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B472CAF41E4AB8FF00576BCA /* Build configuration list for PBXNativeTarget "LC_AlarmTests" */ = {
 			isa = XCConfigurationList;
@@ -521,6 +525,7 @@
 				B472CAF61E4AB8FF00576BCA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B472CAF71E4AB8FF00576BCA /* Build configuration list for PBXNativeTarget "LC_AlarmUITests" */ = {
 			isa = XCConfigurationList;
@@ -529,6 +534,7 @@
 				B472CAF91E4AB8FF00576BCA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
